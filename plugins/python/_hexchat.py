@@ -52,7 +52,10 @@ if sys.version_info[0] == 2:
 
 else:
     def __decode(string):
-        return string.decode()
+        try:
+            return string.decode()
+        except UnicodeDecodeError:
+            return string.decode('windows-1252')
 
 
 # ------------ API ------------
